@@ -20,4 +20,8 @@ public class Login_PageObject extends CommonWeb {
     public void clickButtonLogin() {
         clickToElement(Login_PageUI.button_login);
     }
+
+    public void verifyErrorMessagePopup(String message) {
+        verifyContainTextValueElement(Login_PageUI.txt_error_login_message, message);
+    }
 }

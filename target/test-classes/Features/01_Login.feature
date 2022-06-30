@@ -4,8 +4,8 @@ Feature: 01_Đăng nhập
     Given LoginPage: mở trang tci3
     Then LoginPage: kiểm tra mở trang Đăng nhập thành công với button "ĐĂNG NHẬP" được hiển thị
 
-  @login
-  Scenario Outline: 01_Đăng nhập thành công
+  @login @loginSuccess
+  Scenario Outline: Testcase 01 - Đăng nhập thành công
     Given LoginPage: nhập thông tin đăng nhập
       | case                         | email   | matKhau   |
       | Nhập [Email],[Mật khẩu] đúng | <email> | <matKhau> |
@@ -16,16 +16,16 @@ Feature: 01_Đăng nhập
       | email      | matKhau | userName          |
       | 105C300486 | abc123  | test TCBS71863318 |
 
-#  Scenario Outline: 02_Đăng nhập không thành công
-#    Given LoginPage: nhập thông tin đăng nhập
-#      | email   | matKhau   |
-#      | <email> | <matKhau> |
-#    When LoginPage: nhấn button Đăng nhập
-#    Then LoginPage: kiểm tra hiển thị thông báo lỗi
-#      | thongBaoLoi   |
-#      | <thongBaoLoi> |
-#    Examples:
-#      | case                       | email      | matKhau | thongBaoLoi                                               |
-#      | Nhập [Email]không đúng     |            | abc123  | Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng nhập lại |
-#      | Nhập [Mật khẩu] không đúng | 105C300486 |         | Tên đăng nhập hoặc mật khẩu không đúng. Vui lòng nhập lại |
-	#
+  @loginFail
+  Scenario Outline: Testcase 02 - Đăng nhập không thành công
+    Given LoginPage: nhập thông tin đăng nhập
+      | case   | email   | matKhau   |
+      | <case> | <email> | <matKhau> |
+    When LoginPage: nhấn button Đăng nhập
+    Then LoginPage: kiểm tra hiển thị thông báo lỗi
+      | thongBaoLoi   |
+      | <thongBaoLoi> |
+    Examples:
+      | case                       | email      | matKhau | thongBaoLoi                                        |
+      | Nhập [Email]không đúng     | a          | abc123  | (203004) Tên đăng nhập hoặc mật khẩu không hợp lệ. |
+      | Nhập [Mật khẩu] không đúng | 105C300486 | 1       | (203004) Tên đăng nhập hoặc mật khẩu không hợp lệ. |

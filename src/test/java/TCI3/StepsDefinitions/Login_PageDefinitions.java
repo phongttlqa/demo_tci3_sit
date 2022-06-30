@@ -45,4 +45,9 @@ public class Login_PageDefinitions {
     }
 
 
+    @Then("LoginPage: kiểm tra hiển thị thông báo lỗi")
+    public void loginpageKiểmTraHiểnThịThôngBáoLỗi(DataTable table) {
+        String message = login.getValueColumnDataTableBDD(table, "thongBaoLoi");
+        login.verifyErrorMessagePopup(message);
+    }
 }

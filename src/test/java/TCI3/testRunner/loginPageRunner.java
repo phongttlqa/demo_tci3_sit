@@ -6,7 +6,7 @@ import org.junit.runner.RunWith;
 
 @CucumberOptions(features = "src/test/resources/Features/01_Login.feature",
         glue = {"TCI3.StepsDefinitions"},
-        tags = { "@login" }
+        tags = { "@loginFail" }
 )
 
 @RunWith(CucumberSerenityRunner.class)
